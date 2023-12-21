@@ -12,7 +12,7 @@ class Tasks(BaseTest):
         self.task_view_page = task_view_page.TaskViewPage(self.driver)
 
     def test_add_task_positive(self):
-        project_id = 6043
+        project_name = "zadanie_Kamil"
         title = "title"
         description = "desc"
         environment = "TEST"
@@ -20,7 +20,7 @@ class Tasks(BaseTest):
         deadline = "2023-12-04 23:59:00"
 
         self.login_page.login(self.CORRECT_EMAIL, self.CORRECT_PASSWORD)
-        self.dashboard_page.change_project(project_id)
+        self.dashboard_page.change_project(project_name)
         self.dashboard_page.go_to_tasks()
         self.tasks_page.go_to_add_task()
         self.add_task_page.add_task(title, description, environment, version, deadline)
