@@ -1,5 +1,6 @@
 from test.base_test import BaseTest
 from src.pages import login_page, dashboard_page, tasks_page, add_task_page, task_view_page
+from utilities.task import Task
 
 
 class Tasks(BaseTest):
@@ -18,12 +19,12 @@ class Tasks(BaseTest):
         environment = "TEST"
         version = "TEST"
         deadline = "2023-12-04 23:59:00"
+        task = Task(title, description, environment, version, deadline)
 
         self.login_page.login(self.CORRECT_EMAIL, self.CORRECT_PASSWORD)
         self.dashboard_page.change_project(project_name)
         self.dashboard_page.go_to_tasks()
         self.tasks_page.go_to_add_task()
-        self.add_task_page.add_task(title, description, environment, version, deadline)
+        self.add_task_page.add_task(task)
 
-        self.assertTrue(self.task_view_page.is_task_successfully_added(
-            title, description, environment, version, deadline))
+        self.assertTrue(self.task_view_page.is_task_successfully_added(task))

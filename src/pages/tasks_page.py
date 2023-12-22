@@ -3,5 +3,5 @@ from ..locators import TasksPageLocators
 
 
 class TasksPage(BasePage):
-    def go_to_add_task(self):
+    def go_to_add_task(self) -> None:
         self.click_button(*TasksPageLocators.ADD_A_TASK_BUTTON)
